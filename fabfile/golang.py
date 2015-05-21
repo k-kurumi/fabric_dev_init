@@ -19,6 +19,7 @@ def gvm():
     bison
     gcc
     build-essential
+    libcurl4-openssl-dev
     """
     apt_install(pkg)
 
@@ -33,6 +34,7 @@ def gvm():
   else:
     print "gvm: already installed"
 
+# NOTE 古いgitではgvm installに失敗する(ubuntu1204のgitは1.7)
 @task
 def version(version):
   gvm()
