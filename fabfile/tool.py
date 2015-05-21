@@ -25,6 +25,7 @@ def init():
   apt_install(pkg)
   sudo('chsh -s /bin/zsh %s' % env.user)
 
+  git()
   ag()
   pt()
   jq()
@@ -80,9 +81,16 @@ def dotfiles():
     run('~/.vim/bundle/neobundle.vim/bin/neoinstall')
 
 
-def mysqld():
-  # noninteractiveを付けるとrootのパスワード問い合わせがなくなる
-  sudo('DEBIAN_FRONTEND=noninteractive apt-get install -q -y mysql-server')
+def git():
+  if not files.exists('/usr/local/bin/git'):
+    with cd('/tmp'):
+      run('wget https://www.kernel.org/pub/software/scm/git/git-2.4.1.tar.gz')
+      run('tar zxvf git-2.4.1.tar.gz')
+
+      with cd('git-2.4.1'):
+        run('./configure')
+        run('make')
+        sudo('make install')
 
 
 def vim_latest():
