@@ -20,16 +20,35 @@ def init():
   zsh
   tree
   trash-cli
-  silversearcher-ag
   mosh
   """
   apt_install(pkg)
   sudo('chsh -s /bin/zsh %s' % env.user)
 
+  ag()
   pt()
   jq()
   vim_latest()
   dotfiles()
+
+
+def ag():
+  if not files.exists('/usr/local/bin/ag'):
+    pkg = """
+    automake
+    pkg-config
+    libpcre3-dev
+    zlib1g-dev
+    liblzma-dev
+    """
+    apt_install(pkg)
+
+    with cd('/tmp'):
+      run('git clone https://github.com/ggreer/the_silver_searcher.git')
+
+      with cd('the_silver_searcher'):
+        run('./build.sh')
+        sudo('make install')
 
 
 def pt():
@@ -67,16 +86,16 @@ def mysqld():
 
 
 def vim_latest():
-  pkg = '''
-  python-dev
-  ruby-dev
-  luajit
-  liblua5.2-dev
-  '''
-  apt_install(pkg)
-  apt_build_dep('vim')
+  if not files.exists('/usr/local/bin/vim'):
+    pkg = '''
+    python-dev
+    ruby-dev
+    luajit
+    liblua5.2-dev
+    '''
+    apt_install(pkg)
+    apt_build_dep('vim')
 
-  if not files.exists('~/dotfiles'):
     run('git clone https://github.com/vim/vim.git')
 
     with cd('vim'):
