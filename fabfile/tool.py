@@ -16,7 +16,6 @@ def init():
   exuberant-ctags
   curl
   wget
-  tmux
   zsh
   tree
   trash-cli
@@ -29,6 +28,8 @@ def init():
   ag()
   pt()
   jq()
+  tmux()
+  tig()
   vim_latest()
   dotfiles()
 
@@ -83,12 +84,57 @@ def dotfiles():
 
 def git():
   if not files.exists('/usr/local/bin/git'):
+    pkg = """
+    tcl
+    gettext
+    libcurl4-openssl-dev
+    """
+    apt_install(pkg)
+
     with cd('/tmp'):
       run('wget https://www.kernel.org/pub/software/scm/git/git-2.4.1.tar.gz')
       run('tar zxvf git-2.4.1.tar.gz')
 
       with cd('git-2.4.1'):
         run('./configure')
+        run('make')
+        sudo('make install')
+
+
+def tmux():
+  if not files.exists('/usr/local/bin/tmux'):
+    pkg = """
+    libevent-dev
+    libncurses5-dev
+    """
+    apt_install(pkg)
+
+    with cd('/tmp'):
+      run('wget http://jaist.dl.sourceforge.net/project/tmux/tmux/tmux-2.0/tmux-2.0.tar.gz')
+      run('tar zxvf tmux-2.0.tar.gz')
+
+      with cd('tmux-2.0'):
+        run('./configure')
+        run('make')
+        sudo('make install')
+
+
+def tig():
+  if not files.exists('/usr/local/bin/tig'):
+    pkg = """
+    libncursesw5
+    libncursesw5-dev
+    """
+    apt_install(pkg)
+
+    with cd('/tmp'):
+      run('wget https://github.com/jonas/tig/archive/tig-2.1.1.tar.gz')
+      run('tar zxvf tig-2.1.1.tar.gz')
+
+      # tigはリリースのフォルダ名がおかしい
+      with cd('tig-tig-2.1.1'):
+        run('make configure')
+        run('LDLIBS=-lncursesw CFLAGS=-I/usr/include/ncursesw ./configure --prefix=/usr/local')
         run('make')
         sudo('make install')
 
