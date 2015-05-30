@@ -34,9 +34,17 @@ def gvm():
   else:
     print "gvm: already installed"
 
+
+@task
+def list():
+  gvm()
+  with prefix('source ~/.shenv_local'):
+    run('gvm listall')
+
+
 # NOTE 古いgitではgvm installに失敗する(ubuntu1204のgitは1.7)
 @task
-def version(version):
+def install(version):
   gvm()
   with prefix('source ~/.shenv_local'):
     run('gvm install %s' % version)

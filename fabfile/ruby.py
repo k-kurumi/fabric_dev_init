@@ -35,8 +35,16 @@ def rbenv():
   else:
     print "rbenv: already installed"
 
+
 @task
-def version(version):
+def list():
+  rbenv()
+  with prefix('source ~/.shenv_local'):
+    run('rbenv install -l')
+
+
+@task
+def install(version):
   rbenv()
   # 時間がかかり止まったように見えるため --verbose する
   with prefix('source ~/.shenv_local'):

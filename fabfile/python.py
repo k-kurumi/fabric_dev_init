@@ -37,8 +37,17 @@ def pyenv():
   else:
     print "pyenv: already installed"
 
+
 @task
-def version(version):
+def list():
+  pyenv()
+  with prefix('source ~/.shenv_local'):
+    run('pyenv install -l')
+
+
+
+@task
+def install(version):
   pyenv()
   with prefix('source ~/.shenv_local'):
     run('pyenv install %s' % version)
