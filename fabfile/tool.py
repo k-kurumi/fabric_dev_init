@@ -56,7 +56,7 @@ def ag():
 def pt():
   if not files.exists('/usr/local/bin/pt'):
     with cd('/tmp'):
-      run('wget https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.6/pt_linux_amd64.tar.gz')
+      run('wget https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.7/pt_linux_amd64.tar.gz')
       run('tar zxvf pt_linux_amd64.tar.gz')
       sudo('cp pt_linux_amd64/pt /usr/local/bin')
 
