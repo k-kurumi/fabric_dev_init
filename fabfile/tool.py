@@ -110,7 +110,7 @@ def tmux():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('wget http://jaist.dl.sourceforge.net/project/tmux/tmux/tmux-2.0/tmux-2.0.tar.gz')
+      run('wget https://github.com/tmux/tmux/releases/download/2.0/tmux-2.0.tar.gz')
       run('tar zxvf tmux-2.0.tar.gz')
 
       with cd('tmux-2.0'):
