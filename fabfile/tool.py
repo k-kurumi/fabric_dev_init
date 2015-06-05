@@ -92,7 +92,7 @@ def git():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('https://github.com/git/git/archive/v2.4.2.tar.gz')
+      run('wget https://github.com/git/git/archive/v2.4.2.tar.gz')
       run('tar zxvf v2.4.2.tar.gz')
 
       with cd('git-2.4.2'):
