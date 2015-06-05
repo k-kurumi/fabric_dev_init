@@ -92,8 +92,8 @@ def git():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('wget https://github.com/git/git/archive/v2.4.2.tar.gz')
-      run('tar zxvf v2.4.2.tar.gz')
+      run('wget https://www.kernel.org/pub/software/scm/git/git-2.4.2.tar.gz')
+      run('tar zxvf git-2.4.2.tar.gz')
 
       with cd('git-2.4.2'):
         run('./configure')
