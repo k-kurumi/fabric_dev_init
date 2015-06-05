@@ -92,10 +92,10 @@ def git():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('wget https://www.kernel.org/pub/software/scm/git/git-2.4.1.tar.gz')
-      run('tar zxvf git-2.4.1.tar.gz')
+      run('https://github.com/git/git/archive/v2.4.2.tar.gz')
+      run('tar zxvf v2.4.2.tar.gz')
 
-      with cd('git-2.4.1'):
+      with cd('git-2.4.2'):
         run('./configure')
         run('make')
         sudo('make install')
