@@ -56,7 +56,7 @@ def ag():
 def pt():
   if not files.exists('/usr/local/bin/pt'):
     with cd('/tmp'):
-      run('wget https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.7/pt_linux_amd64.tar.gz')
+      run('wget https://github.com/monochromegane/the_platinum_searcher/releases/download/v1.7.9/pt_linux_amd64.tar.gz')
       run('tar zxvf pt_linux_amd64.tar.gz')
       sudo('cp pt_linux_amd64/pt /usr/local/bin')
 
@@ -92,10 +92,10 @@ def git():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('wget https://www.kernel.org/pub/software/scm/git/git-2.4.2.tar.gz')
-      run('tar zxvf git-2.4.2.tar.gz')
+      run('wget https://www.kernel.org/pub/software/scm/git/git-2.6.3.tar.gz')
+      run('tar zxvf git-2.6.3.tar.gz')
 
-      with cd('git-2.4.2'):
+      with cd('git-2.6.3'):
         run('./configure')
         run('make')
         sudo('make install')
@@ -110,10 +110,10 @@ def tmux():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('wget https://github.com/tmux/tmux/releases/download/2.0/tmux-2.0.tar.gz')
-      run('tar zxvf tmux-2.0.tar.gz')
+      run('wget https://github.com/tmux/tmux/releases/download/2.1/tmux-2.1.tar.gz')
+      run('tar zxvf tmux-2.1.tar.gz')
 
-      with cd('tmux-2.0'):
+      with cd('tmux-2.1'):
         run('./configure')
         run('make')
         sudo('make install')
