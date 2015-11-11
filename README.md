@@ -4,6 +4,20 @@ ubuntuの初期設定用fabfile
 
 # Usage
 
+1. vmの起動
+
+```
+vagrant up
+```
+
+2. ssh_configの作成
+
+```
+vagrant ssh-config --host vagrant > ssh_config
+```
+
+3. 実行
+
 dotfilesほか主要ライブラリのインストール
 ```
 fab -H vagrant tool.init
