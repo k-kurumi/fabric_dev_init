@@ -14,6 +14,6 @@ import node
 env.use_ssh_config = True
 env.colorize_errors = True
 
-# 環境変数SSH_CONFIG_PATHがなければ~/.ssh/configが使われる
-if os.environ.has_key("SSH_CONFIG_PATH"):
-  env.ssh_config_path = os.environ["SSH_CONFIG_PATH"]
+# カレントにssh_configがなければ~/.ssh/configが使われる
+if os.path.exists("ssh_config"):
+  env.ssh_config_path = "ssh_config"
