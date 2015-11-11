@@ -18,31 +18,26 @@ vagrant ssh-config --host vagrant > ssh_config
 
 3. 実行
 
-dotfilesほか主要ライブラリのインストール
 ```
-fab -H vagrant tool.init
-```
+# SSH_CONFIG_PATH指定なしのときは~/.ssh/configが参照される
+export SSH_CONFIG_PATH=ssh_config
 
-ruby
-```
+# dotfilesほか主要ライブラリのインストール
+fab -H vagrant tool.init
+
+# ruby
 fab -H vagrant ruby.list
 fab -H vagrant ruby.install:2.2.2
-```
 
-python
-```
+# python
 fab -H vagrant python.list
 fab -H vagrant python.install:2.7.10
-```
 
-golang
-```
+# golang
 fab -H vagrant golang.list
 fab -H vagrant golang.install:go1.4.2
-```
 
-node.js
-```
+# node.js
 fab -H vagrant node.list
 fab -H vagrant node.install:v0.12.4
 ```
