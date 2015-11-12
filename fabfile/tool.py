@@ -20,6 +20,10 @@ def init():
   tree
   trash-cli
   mosh
+  parallel
+  renameutils
+  p7zip-full
+  unzip
   """
   apt_install(pkg)
   sudo('chsh -s /bin/zsh %s' % env.user)
