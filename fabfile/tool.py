@@ -64,7 +64,7 @@ def ag():
 def pt():
   if not files.exists('/usr/local/bin/pt'):
     with cd('/tmp'):
-      run('wget https://github.com/monochromegane/the_platinum_searcher/releases/download/v2.0.0/pt_linux_amd64.tar.gz')
+      run('wget https://github.com/monochromegane/the_platinum_searcher/releases/download/v2.0.4/pt_linux_amd64.tar.gz')
       run('tar zxvf pt_linux_amd64.tar.gz')
       sudo('cp pt_linux_amd64/pt /usr/local/bin')
 
@@ -100,10 +100,10 @@ def git():
     apt_install(pkg)
 
     with cd('/tmp'):
-      run('wget https://www.kernel.org/pub/software/scm/git/git-2.6.3.tar.gz')
-      run('tar zxvf git-2.6.3.tar.gz')
+      run('wget https://www.kernel.org/pub/software/scm/git/git-2.7.0.tar.gz')
+      run('tar zxvf git-2.7.0.tar.gz')
 
-      with cd('git-2.6.3'):
+      with cd('git-2.7.0'):
         run('./configure')
         run('make')
         sudo('make install')
