@@ -26,6 +26,9 @@ def init():
   renameutils
   p7zip-full
   unzip
+  libmysqlclient-dev
+  libsqlite3-dev
+  sqlite3
   """
   apt_install(pkg)
   sudo('chsh -s /bin/zsh %s' % env.user)
