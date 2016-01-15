@@ -5,10 +5,11 @@ from fabric.api import run, sudo, cd, task, env
 from fabric.contrib import files
 
 from .apt import install as apt_install, build_dep as apt_build_dep
+import re
 
 @task
 def init():
-  # NOTE vagrantにmosh接続は表示がおかしくなる(udp関連かも)
+  u'''開発に必要なコマンド一式ほか'''
   pkg = """
   vim
   build-essential
@@ -16,6 +17,7 @@ def init():
   exuberant-ctags
   curl
   wget
+  w3m
   zsh
   tree
   trash-cli
@@ -34,6 +36,8 @@ def init():
   jq()
   tmux()
   tig()
+  cf()
+  direnv()
   vim_latest()
   dotfiles()
 
@@ -171,3 +175,21 @@ def vim_latest():
         ''')
       run('make')
       sudo('make install')
+
+def cf():
+  if not files.exists('/usr/local/bin/cf'):
+    with cd('/tmp'):
+      run('curl -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -zx')
+      sudo('mv cf /usr/local/bin')
+
+def direnv():
+  if not files.exists('/usr/local/bin/direnv'):
+    with cd('/tmp'):
+      run('wget https://github.com/direnv/direnv/releases/download/v2.6.0/direnv.linux-amd64')
+      run('mv direnv.linux-amd64 direnv')
+      run('chmod +x direnv')
+      sudo('mv direnv /usr/local/bin')
+
+    files.append('~/.shenv_local', re.sub(r'\n\s+', '\n', '''
+                                      eval "$(direnv hook zsh)"
+                                      '''))
