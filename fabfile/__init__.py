@@ -10,7 +10,7 @@ import ruby
 import python
 import golang
 import node
-import jst
+import timezone
 import gitconfig
 
 env.use_ssh_config = True

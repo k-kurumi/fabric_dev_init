@@ -37,7 +37,7 @@ def gvm():
 
 @task
 def list():
-  u'''インストール可能なバージョン一覧'''
+  u'''gvmでインストール可能なバージョン一覧'''
   gvm()
   with prefix('source ~/.shenv_local'):
     run('gvm listall')
@@ -46,7 +46,7 @@ def list():
 # NOTE 古いgitではgvm installに失敗する(ubuntu1204のgitは1.7)
 @task
 def install(version):
-  u'''指定バージョンをインストール'''
+  u'''golangの指定バージョンをインストール'''
   gvm()
   with prefix('source ~/.shenv_local'):
     run('gvm install %s' % version)

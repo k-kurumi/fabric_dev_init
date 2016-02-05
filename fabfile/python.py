@@ -40,7 +40,7 @@ def pyenv():
 
 @task
 def list():
-  u'''インストール可能なバージョン一覧'''
+  u'''pyenvでインストール可能なバージョン一覧'''
   pyenv()
   with prefix('source ~/.shenv_local'):
     run('pyenv install -l')
@@ -49,7 +49,7 @@ def list():
 
 @task
 def install(version):
-  u'''指定バージョンをインストール'''
+  u'''pythonの指定バージョンをインストール'''
   pyenv()
   with prefix('source ~/.shenv_local'):
     run('pyenv install %s' % version)

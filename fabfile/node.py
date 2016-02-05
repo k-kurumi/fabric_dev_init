@@ -22,7 +22,7 @@ def ndenv():
 
 @task
 def list():
-  u'''インストール可能なバージョン一覧'''
+  u'''ndenvでインストール可能なバージョン一覧'''
   ndenv()
   with prefix('source ~/.shenv_local'):
     run('ndenv install -l')
@@ -30,7 +30,7 @@ def list():
 
 @task
 def install(version):
-  u'''指定バージョンをインストール'''
+  u'''node.jsの指定バージョンをインストール'''
   ndenv()
   with prefix('source ~/.shenv_local'):
     run('ndenv install --verbose %s' % version)

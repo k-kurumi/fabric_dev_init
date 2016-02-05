@@ -38,7 +38,7 @@ def rbenv():
 
 @task
 def list():
-  u'''インストール可能なバージョン一覧'''
+  u'''rbenvでインストール可能なバージョン一覧'''
   rbenv()
   with prefix('source ~/.shenv_local'):
     run('rbenv install -l')
@@ -46,7 +46,7 @@ def list():
 
 @task
 def install(version):
-  u'''指定バージョンをインストール'''
+  u'''rubyの指定バージョンをインストール'''
   rbenv()
   # 時間がかかり止まったように見えるため --verbose する
   with prefix('source ~/.shenv_local'):
