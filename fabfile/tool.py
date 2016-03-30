@@ -42,6 +42,7 @@ def init():
   cf()
   direnv()
   vim_latest()
+  massren()
   dotfiles()
 
 
@@ -197,3 +198,10 @@ def direnv():
     files.append('~/.shenv_local', re.sub(r'\n\s+', '\n', '''
                                       eval "$(direnv hook zsh)"
                                       '''))
+
+def massren():
+  u'''エディタ経由のリネームツール(renamer.vimは古くて使えなくなった)'''
+  if not files.exists('/usr/local/bin/massren'):
+    with cd('/tmp'):
+      run('curl -L "https://github.com/laurent22/massren/releases/download/v1.3.0/massren.linux-amd64.tar.gz" | tar zx')
+      sudo('mv massren /usr/local/bin')
