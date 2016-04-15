@@ -76,7 +76,7 @@ def pt():
 def jq():
   if not files.exists('/usr/local/bin/jq'):
     with cd('/tmp'):
-      run('wget http://stedolan.github.io/jq/download/linux64/jq')
+      run('wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64')
       run('chmod +x jq')
       sudo('cp jq /usr/local/bin')
 
