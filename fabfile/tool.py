@@ -190,7 +190,7 @@ def cf():
 def direnv():
   if not files.exists('/usr/local/bin/direnv'):
     with cd('/tmp'):
-      run('wget https://github.com/direnv/direnv/releases/download/v2.9.0/direnv.linux-amd64 -O direnv')
+      run('wget https://github.com/direnv/direnv/releases/download/v2.6.0/direnv.linux-amd64 -O direnv')
       run('chmod +x direnv')
       sudo('mv direnv /usr/local/bin')
 
